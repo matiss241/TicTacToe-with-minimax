@@ -1,5 +1,3 @@
-import jdk.swing.interop.SwingInterOpUtils;
-
 public class Computer3 {
     class AiMove {
         int row, col;
