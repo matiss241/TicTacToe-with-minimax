@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Chose a computer level to play against 1/2/3 of chose 4 to enter two player mode");
+        System.out.println("Chose a computer level to play against 1/2/3 or chose 4 to enter two player mode");
         if(sc.hasNextInt()){
             int choice = sc.nextInt();
             if(choice >= 1 && choice <=4){
@@ -251,6 +251,9 @@ public class Main {
             Move playersMove2 = player2.makeMove(2);
             putMove(playersMove2);
             printTheGrid();
+            if(gameOver() || hasWon() != " "){
+                break;
+            }
         }
         if(hasWon().equals(" ")){
             System.out.println("It is a draw!");
