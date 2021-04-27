@@ -1,3 +1,5 @@
+Tic Tac Toe
+
 This is a simple Tic Tac Toe console game.
 It has 3 levels and a two-player mode.
 In level one user plays with a computer that picks a move randomly.
