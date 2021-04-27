@@ -2,43 +2,53 @@ import java.util.Scanner;
 
 public class Main {
 
-    // Tic tac toe grid consists of array of type Move that contains move's value(X/O) and position on the grid
+    // Tic tac toe grid consists of an array of type Move that contains move's value(X/O) and position on the grid
     private static Move[][] grid = new Move[3][3];
 
     public static void main(String[] args) {
+
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Chose a computer level to play against 1/2/3 or chose 4 to enter two player mode");
-        if(sc.hasNextInt()){
-            int choice = sc.nextInt();
-            if(choice >= 1 && choice <=4){
-                switch (choice){
-                    case 1:
-                        gameMode1();
-                        break;
-                    case 2:
-                        gameMode2();
-                        break;
-                    case 3:
-                        gameMode3();
-                        break;
-                    case 4:
-                        gameMode4();
-                        break;
+        loop: while(true) {
+
+            System.out.println("Press 1 for level 1" +
+                            "\nPress 2 for level 2" +
+                            "\nPress 3 for level 3" +
+                            "\nPress 4 to play in multilayer mode" +
+                            "\nPress 5 to exit the game");
+
+            if (sc.hasNextInt()) {
+
+                int choice = sc.nextInt();
+
+                if (choice >= 1 && choice <= 5) {
+                    switch (choice) {
+                        case 1:
+                            gameMode1();
+                            break;
+                        case 2:
+                            gameMode2();
+                            break;
+                        case 3:
+                            gameMode3();
+                            break;
+                        case 4:
+                            gameMode4();
+                            break;
+                        case 5:
+                            System.out.println("Goodbye!");
+                            break loop;
+                    }
+                } else {
+                    System.out.println("Input error");
                 }
-            }else{
+            } else {
                 System.out.println("Input error");
             }
-        } else{
-            System.out.println("Input error");
         }
     }
 
-    public static Move[][] getGrid() {
-        return grid;
-    }
-
-    // StartUp method fills the array with blank values and sets their positions on the grid
+    // StartUp method fills the array with spaces (" ") and sets their positions on the grid
     public static void startUp() {
         int count = 1;
         for (int i = 0; i < grid.length; i++) {
@@ -61,6 +71,7 @@ public class Main {
         return false;
     }
 
+    // PutMove method puts the move into the grid after a player of computer request
     public static void putMove(Move move) {
         int position = move.getPosition();
         int count = 1;
@@ -74,6 +85,7 @@ public class Main {
         }
     }
 
+    // GameOver method checks if the grid is full and there are no more spaces (" ") left
     public static boolean gameOver() {
         boolean isOver = true;
         for (int i = 0; i < 3; i++) {
@@ -86,7 +98,7 @@ public class Main {
         return isOver;
     }
 
-    // Checks if anyone has won
+    // Has Won method returns "X" if player x has won and the same for o player. It returns " " if no one has won
     public static String hasWon() {
         String combination = "";
         for (int i = 1; i <= 8; i++) {
@@ -125,7 +137,7 @@ public class Main {
         return " ";
     }
 
-    // Prints the grid with made moves
+    // Prints the grid
     private static void printTheGrid() {
         System.out.println("   |   |   ");
         System.out.println(" " + grid[0][0].getSymbol() + " | " + grid[1][0].getSymbol() + " | " + grid[2][0].getSymbol() + " ");
@@ -141,6 +153,7 @@ public class Main {
         System.out.println("********************************");
     }
 
+    // Prints the rules
     private static void printTheRules() {
         System.out.println("You are playing tic tac toe");
         System.out.println("To make a move you have to enter your move's position on the grid");
@@ -148,8 +161,9 @@ public class Main {
         System.out.println("1 2 3\n4 5 6\n7 8 9");
     }
 
-
+    // Controls the game for level 1
     private static void gameMode1(){
+
         Player player = new Player();
         Computer1 computer = new Computer1();
 
@@ -175,6 +189,7 @@ public class Main {
         }
     }
 
+    // Controls the game for level 2
     private static void gameMode2(){
         Player player = new Player();
         Computer2 computer = new Computer2();
@@ -204,6 +219,7 @@ public class Main {
         }
     }
 
+    // Controls the game for level 3
     private static void gameMode3(){
         Player player = new Player();
         Computer3 ai = new Computer3();
@@ -233,6 +249,7 @@ public class Main {
         }
     }
 
+    // Controls the game for multiplayer mode
     private static void gameMode4(){
         Player player1 = new Player();
         Player player2 = new Player();

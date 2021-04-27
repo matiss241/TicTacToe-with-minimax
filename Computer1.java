@@ -1,5 +1,6 @@
 import java.util.Random;
 
+// Level 1 computer randomly picks a move from the available moves in the grid
 public class Computer1 {
 
     public Move computerMove() {

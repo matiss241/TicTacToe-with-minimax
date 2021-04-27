@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+// Controls players moves
 public class Player {
 
     public Move makeMove(int player) {

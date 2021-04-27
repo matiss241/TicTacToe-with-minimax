@@ -1,5 +1,6 @@
 import java.util.Random;
 
+// Level 2 computer checks if it can win in the next move and then makes the move
 public class Computer2 {
 
     public Move computerMove() {

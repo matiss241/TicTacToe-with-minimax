@@ -1,3 +1,5 @@
+
+// Level 3 picks the best possible move on the grid. It uses minimax algorithm
 public class Computer3 {
     class AiMove {
         int row, col;
